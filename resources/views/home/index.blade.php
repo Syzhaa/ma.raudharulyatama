@@ -9,8 +9,8 @@
                 <div class="col-12">
                     <!-- Hero Content -->
                     <div class="hero-content text-center">
-                        <h2>Selamat Datang di Laraschool</h2>
-                        <a href="{{ route('admin.profile.index') }}" class="btn clever-btn">Sekolah Elit</a>
+                        <h2>SELAMAT DATANG DI MA RAUDHATUL YATAMA</h2>
+                        <a href="#" class="btn clever-btn">Sekolah Elit</a>
                     </div>
                 </div>
             </div>

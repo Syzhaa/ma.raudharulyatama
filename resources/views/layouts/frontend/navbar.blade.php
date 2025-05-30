@@ -1,77 +1,160 @@
-<div class="clever-main-menu bg-white" style="width: 100%;">
-    <div class="classy-nav-container breakpoint-off" style="padding: 0 30px;">
-        <nav class="classy-navbar justify-content-between align-items-center" id="cleverNav" style="width: 100%;">
+<div class="clever-main-menu bg-white fixed-top shadow-sm" style="z-index: 1055;">
 
-            <!-- Logo -->
-            @if (isset($logo) && $logo->file_name)
-                <a class="navbar-brand d-flex align-items-center" href="/">
-                    <img src="{{ asset('uploads/img/logo/' . $logo->file_name) }}" width="50" alt="Logo"
-                        class="mr-2">
-                    MADRASAH ALIYAH <br> RAUDHATUL YATAMA
-                </a>
-            @else
-                <a class="navbar-brand" href="/">LARASCHOOL</a>
-            @endif
+    <div class="classy-nav-container px-3">
+        <nav class="classy-navbar d-flex justify-content-between align-items-center w-100 flex-wrap" id="cleverNav">
 
-            <!-- Toggler -->
-            <div class="classy-navbar-toggler">
-                <span class="navbarToggler"><span></span><span></span><span></span></span>
+            <!-- LOGO (KIRI) -->
+            <div class="d-flex align-items-center">
+                @if (isset($logo) && $logo->file_name)
+                    <a href="/" class="brand-link d-flex align-items-center text-left" style="font-size: 13px;">
+                        <img src="{{ asset('uploads/img/logo/' . $logo->file_name) }}" alt="Logo" class="mr-2"
+                            style="opacity: .9; width: 37px; height: 37px; object-fit: contain;">
+                        <div class="d-flex flex-column justify-content-center" style="font-weight: 500; line-height: 1.2;">
+                            <span class="text-black mb-0">MADRASAH ALIYAH</span>
+                            <span class="text-black mb-0">RAUDHATUL YATAMA</span>
+                        </div>
+                    </a>
+                @else
+                    <a class="navbar-brand text-left" href="/">M ARAUDHATUL YATAMA</a>
+                @endif
             </div>
 
-            <!-- Menu -->
-            <div class="classy-menu" style="flex-grow: 1; justify-content: flex-end;">
+            <!-- MENU DESKTOP (KANAN) -->
+            <div class="desktop-menu d-none d-md-flex align-items-center">
+                <ul class="d-flex list-unstyled mb-0">
+                    <li class="px-3"><a href="/" class="{{ Request::is('/') ? 'text-primary' : '' }}">Beranda</a></li>
+                    <li class="px-3"><a href="{{ route('about') }}" class="{{ Request::is('about') ? 'text-primary' : '' }}">Tentang</a></li>
+                    <li class="px-3"><a href="{{ route('contact') }}" class="{{ Request::is('contact') ? 'text-primary' : '' }}">Kontak</a></li>
+                    <li class="px-3"><a href="{{ route('artikel') }}" class="{{ Request::segment(1) == 'artikel' ? 'text-primary' : '' }}">Artikel</a></li>
+                    <li class="px-3"><a href="{{ route('pengumuman') }}" class="{{ Request::segment(1) == 'pengumuman' ? 'text-primary' : '' }}">Pengumuman</a></li>
+                    <li class="px-3"><a href="#" class="{{ Request::is('agenda') ? 'text-primary' : '' }}">Agenda</a></li>
+                </ul>
 
-                <!-- Close Button -->
-                <div class="classycloseIcon">
-                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                </div>
-
-                <!-- Nav Start -->
-                <div class="classynav d-flex align-items-center">
-                    <ul class="mr-4">
-                        <li><a href="/" class="{{ Request::is('/') ? 'text-primary' : '' }}">Home</a></li>
-                        <li><a href="{{ route('about') }}"
-                                class="{{ Request::is('about') ? 'text-primary' : '' }}">Tentang</a></li>
-                        <li><a href="{{ route('contact') }}"
-                                class="{{ Request::is('contact') ? 'text-primary' : '' }}">Kontak</a></li>
-                        <li><a href="{{ route('artikel') }}"
-                                class="{{ Request::segment(1) == 'artikel' ? 'text-primary' : '' }}">Artikel</a></li>
-                        <li><a href="{{ route('pengumuman') }}"
-                                class="{{ Request::segment(1) == 'pengumuman' ? 'text-primary' : '' }}">Pengumuman</a>
-                        </li>
-                        <li><a href="#" class="{{ Request::is('agenda') ? 'text-primary' : '' }}">Agenda</a></li>
-                    </ul>
-
-                    <!-- Search -->
-                    <div class="search-area mr-4">
-                        <form action="{{ route('artikel.search') }}" method="GET">
-                            <input name="keyword" id="search" placeholder="Search">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
-
-                    <!-- Auth -->
-                    @auth
-                        <div class="login-state d-flex align-items-center">
-                            <div class="user-name mr-2">
-                                <div class="dropdown">
-                                    <a class="dropdown-toggle" href="#" role="button" id="userName"
-                                        data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">{{ auth()->user()->name }}</a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
-                                        <a class="dropdown-item" href="{{ route('admin.index') }}">Dashboard</a>
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
-                                            <button type="submit" class="dropdown-item">Logout</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                @auth
+                    <div class="dropdown ml-3">
+                        <a class="dropdown-toggle" href="#" role="button" id="userName"
+                            data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">{{ auth()->user()->name }}</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
+                            <a class="dropdown-item" href="{{ route('admin.index') }}">Dashboard</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Logout</button>
+                            </form>
                         </div>
-                    @endauth
-                </div>
-                <!-- Nav End -->
+                    </div>
+                @endauth
+            </div>
+
+            <!-- HAMBURGER (KANAN DI MOBILE) -->
+            <div class="classy-navbar-toggler d-md-none" id="menuToggle">
+                <span class="navbarToggler"><span></span><span></span><span></span></span>
             </div>
         </nav>
     </div>
+
+    <!-- Sidebar Menu (Mobile Only) -->
+    <div id="mobileSidebar" class="mobile-sidebar">
+        <div class="sidebar-header d-flex justify-content-between align-items-center p-3 border-bottom">
+            <span class="font-weight-bold">Menu</span>
+            <button id="sidebarClose" class="btn btn-sm btn-outline-secondary">&times;</button>
+        </div>
+        <ul class="list-unstyled px-3 pt-2">
+            <li><a href="/" class="d-block py-2 {{ Request::is('/') ? 'text-primary' : '' }}">Home</a></li>
+            <li><a href="{{ route('about') }}" class="d-block py-2 {{ Request::is('about') ? 'text-primary' : '' }}">Tentang</a></li>
+            <li><a href="{{ route('contact') }}" class="d-block py-2 {{ Request::is('contact') ? 'text-primary' : '' }}">Kontak</a></li>
+            <li><a href="{{ route('artikel') }}" class="d-block py-2 {{ Request::segment(1) == 'artikel' ? 'text-primary' : '' }}">Artikel</a></li>
+            <li><a href="{{ route('pengumuman') }}" class="d-block py-2 {{ Request::segment(1) == 'pengumuman' ? 'text-primary' : '' }}">Pengumuman</a></li>
+            <li><a href="#" class="d-block py-2 {{ Request::is('agenda') ? 'text-primary' : '' }}">Agenda</a></li>
+            @auth
+                <hr>
+                <li><a href="{{ route('admin.index') }}" class="d-block py-2">Dashboard</a></li>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-link p-0 py-2 d-block">Logout</button>
+                    </form>
+                </li>
+            @endauth
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
 </div>
+
+<!-- CSS -->
+<style>
+    .navbarToggler span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 4px 0;
+        background-color: #333;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-sidebar {
+        position: fixed;
+        top: 0;
+        left: -260px;
+        width: 250px;
+        height: 100vh;
+        background: #fff;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+        z-index: 1050;
+        transition: left 0.3s ease-in-out;
+        overflow-y: auto;
+    }
+
+    .mobile-sidebar.open {
+        left: 0;
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1049;
+        display: none;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar-overlay.show {
+        display: block;
+    }
+
+    /* Desktop menu visible only on md up */
+    .desktop-menu {
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+</style>
+
+<!-- JS -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('mobileSidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const closeBtn = document.getElementById('sidebarClose');
+
+        toggle.addEventListener('click', function () {
+            sidebar.classList.add('open');
+            overlay.classList.add('show');
+        });
+
+        closeBtn.addEventListener('click', function () {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+        });
+
+        overlay.addEventListener('click', function () {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+        });
+    });
+</script>
