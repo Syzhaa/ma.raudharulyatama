@@ -1,8 +1,10 @@
 @extends('layouts.frontend.app', [
     'title' => 'Home',
 ])
+
 @section('content')
     <!-- ##### Hero Area Start ##### -->
+    
     <section class="hero-area bg-img bg-overlay-2by5" style="background-image: url({{ asset('img/bg') }}/bg1.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">

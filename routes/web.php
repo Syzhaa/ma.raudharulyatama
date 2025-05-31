@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ChangePasswordController;
+use App\Http\Controllers\Admin\KategoriArtikelController;
 use App\Http\Controllers\Admin\UsersController;
 
 
@@ -51,9 +52,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
 		Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 		Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 		Route::put('/profile/logo', [ProfileController::class, 'updateLogo'])->name('profile.logo.update');
-
-
 		Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('change-password.index');
+		Route::get('/kategori-artikel', [KategoriArtikelController::class, 'index'])->name('kategori-artikel.index');
 
 		//Resource Controller
 		Route::resource('users', 'UsersController');

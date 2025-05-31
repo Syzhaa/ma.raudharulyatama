@@ -2,6 +2,9 @@
     'title' => 'About',
 ])
 @section('content')
+   <div style="margin-top: 30px">
+        <x-heroconten>Profil Lengkap MA Raudhatul Yatama: Sejarah, Visi Misi, dan lain- lainnya</x-heroconten>
+    </div>
 <div class="regular-page-area section-padding-100">
     <div class="container">
         <div class="row">

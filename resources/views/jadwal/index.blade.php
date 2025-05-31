@@ -2,6 +2,11 @@
     'title' => 'Jadwal',
 ])
 @section('content')
+    <div style="margin-top: 30px">
+        <x-heroconten>Jadwal Pelajaran
+MA Raudhatul Yatama</x-heroconten>
+    </div>
+    
     <div class="regular-page-area section-padding-100">
         <div class="container">
             <div class="row">
