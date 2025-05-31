@@ -24,10 +24,10 @@
                 <ul class="d-flex list-unstyled mb-0">
                     <li class="px-3"><a href="/" class="{{ Request::is('/') ? 'text-primary' : '' }}">Beranda</a></li>
                     <li class="px-3"><a href="{{ route('about') }}" class="{{ Request::is('about') ? 'text-primary' : '' }}">Tentang</a></li>
-                    <li class="px-3"><a href="{{ route('contact') }}" class="{{ Request::is('contact') ? 'text-primary' : '' }}">Kontak</a></li>
-                    <li class="px-3"><a href="{{ route('artikel') }}" class="{{ Request::segment(1) == 'artikel' ? 'text-primary' : '' }}">Artikel</a></li>
+                    <li class="px-3"><a href="{{ route('jadwal') }}" class="{{ Request::is('jadwal') ? 'text-primary' : '' }}">Jadwal</a></li>
                     <li class="px-3"><a href="{{ route('pengumuman') }}" class="{{ Request::segment(1) == 'pengumuman' ? 'text-primary' : '' }}">Pengumuman</a></li>
-                    <li class="px-3"><a href="#" class="{{ Request::is('agenda') ? 'text-primary' : '' }}">Agenda</a></li>
+                    <li class="px-3"><a href="{{ route('artikel') }}" class="{{ Request::segment(1) == 'artikel' ? 'text-primary' : '' }}">Artikel</a></li>
+                    <li class="px-3"><a href="{{ route('galeri') }}" class="{{ Request::is('galeri') ? 'text-primary' : '' }}">Galeri</a></li>
                 </ul>
 
                 @auth
@@ -62,10 +62,10 @@
         <ul class="list-unstyled px-3 pt-2">
             <li><a href="/" class="d-block py-2 {{ Request::is('/') ? 'text-primary' : '' }}">Home</a></li>
             <li><a href="{{ route('about') }}" class="d-block py-2 {{ Request::is('about') ? 'text-primary' : '' }}">Tentang</a></li>
-            <li><a href="{{ route('contact') }}" class="d-block py-2 {{ Request::is('contact') ? 'text-primary' : '' }}">Kontak</a></li>
-            <li><a href="{{ route('artikel') }}" class="d-block py-2 {{ Request::segment(1) == 'artikel' ? 'text-primary' : '' }}">Artikel</a></li>
+            <li><a href="#" class="d-block py-2 {{ Request::is('agenda') ? 'text-primary' : '' }}">Jadwal</a></li>
             <li><a href="{{ route('pengumuman') }}" class="d-block py-2 {{ Request::segment(1) == 'pengumuman' ? 'text-primary' : '' }}">Pengumuman</a></li>
-            <li><a href="#" class="d-block py-2 {{ Request::is('agenda') ? 'text-primary' : '' }}">Agenda</a></li>
+            <li><a href="{{ route('artikel') }}" class="d-block py-2 {{ Request::segment(1) == 'artikel' ? 'text-primary' : '' }}">Artikel</a></li>
+            <li><a href="#" class="d-block py-2 {{ Request::is('agenda') ? 'text-primary' : '' }}">Galeri</a></li>
             @auth
                 <hr>
                 <li><a href="{{ route('admin.index') }}" class="d-block py-2">Dashboard</a></li>

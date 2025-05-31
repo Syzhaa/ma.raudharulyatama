@@ -14,6 +14,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\GaleriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,15 +36,12 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 
 
-//Artikel
 Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel');
-Route::get('/artikel/search', [ArtikelController::class, 'search'])->name('artikel.search');
-
 Route::get('/artikel/{artikel:slug}', [ArtikelController::class, 'show'])->name('artikel.show');
-
-//Pengumuman
 Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman');
 Route::get('/pengumuman/{pengumuman:slug}', [PengumumanController::class, 'show'])->name('pengumuman.show');
+Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
+Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri');
 
 //Admin
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth']], function () {

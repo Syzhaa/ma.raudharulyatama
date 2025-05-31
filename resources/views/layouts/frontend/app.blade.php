@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *Must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>MA RAUDHATULYATAMA | {{ $title ?? '' }}</title>
+    <title>MA Raydhatul Yatama</title>
 
 
     <!-- Stylesheet -->
