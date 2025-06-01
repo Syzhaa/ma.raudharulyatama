@@ -3,8 +3,7 @@
     <div class="classy-nav-container px-3">
         <nav class="classy-navbar d-flex justify-content-between align-items-center w-100 flex-wrap" id="cleverNav">
 
-            <!-- LOGO (KIRI) -->
-            <div class="d-flex align-items-center">
+            <div class="logo d-flex align-items-center">
                 @if (isset($logo) && $logo->file_name)
                     <a href="/" class="brand-link d-flex align-items-center text-left" style="font-size: 13px;">
                         <img src="{{ asset('uploads/img/logo/' . $logo->file_name) }}" alt="Logo" class="mr-2"
@@ -19,7 +18,6 @@
                 @endif
             </div>
 
-            <!-- MENU DESKTOP (KANAN) -->
             <div class="desktop-menu d-none d-md-flex align-items-center">
                 <ul class="d-flex list-unstyled mb-0">
                     <li class="px-3"><a href="/" class="{{ Request::is('/') ? 'text-primary' : '' }}">Beranda</a></li>
@@ -46,14 +44,12 @@
                 @endauth
             </div>
 
-            <!-- HAMBURGER (KANAN DI MOBILE) -->
             <div class="classy-navbar-toggler d-md-none" id="menuToggle">
                 <span class="navbarToggler"><span></span><span></span><span></span></span>
             </div>
         </nav>
     </div>
 
-    <!-- Sidebar Menu (Mobile Only) -->
     <div id="mobileSidebar" class="mobile-sidebar">
         <div class="sidebar-header d-flex justify-content-between align-items-center p-3 border-bottom">
             <span class="font-weight-bold">Menu</span>
@@ -79,11 +75,9 @@
         </ul>
     </div>
 
-    <!-- Overlay -->
     <div id="sidebarOverlay" class="sidebar-overlay"></div>
 </div>
 
-<!-- CSS -->
 <style>
     .navbarToggler span {
         display: block;
@@ -97,18 +91,18 @@
     .mobile-sidebar {
         position: fixed;
         top: 0;
-        left: -260px;
+        left: -260px; /* Start off-screen */
         width: 250px;
         height: 100vh;
         background: #fff;
         box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
-        z-index: 1050;
+        z-index: 1050; /* Ensure sidebar is above overlay but below main menu when needed */
         transition: left 0.3s ease-in-out;
         overflow-y: auto;
     }
 
     .mobile-sidebar.open {
-        left: 0;
+        left: 0; /* Slide in */
     }
 
     .sidebar-overlay {
@@ -118,7 +112,7 @@
         right: 0;
         bottom: 0;
         background: rgba(0, 0, 0, 0.4);
-        z-index: 1049;
+        z-index: 1049; /* Below sidebar */
         display: none;
         transition: all 0.3s ease;
     }
@@ -129,12 +123,21 @@
 
     /* Desktop menu visible only on md up */
     .desktop-menu {
-        flex-grow: 1;
-        justify-content: flex-end;
+        flex-grow: 1; /* Allow desktop menu to take available space */
+        justify-content: flex-end; /* Align desktop menu items to the right */
     }
+
+    /* --- MODIFICATION FOR MOBILE LOGO MARGIN --- */
+    /* Apply margin-left to the logo on screens smaller than md (Bootstrap's md breakpoint is 768px) */
+    @media (max-width: 767.98px) {
+        .classy-navbar .logo {
+            margin-left: -20px;
+        }
+    }
+    /* --- END OF MODIFICATION --- */
+
 </style>
 
-<!-- JS -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const toggle = document.getElementById('menuToggle');
@@ -142,16 +145,19 @@
         const overlay = document.getElementById('sidebarOverlay');
         const closeBtn = document.getElementById('sidebarClose');
 
+        // Event listener for hamburger icon click
         toggle.addEventListener('click', function () {
             sidebar.classList.add('open');
             overlay.classList.add('show');
         });
 
+        // Event listener for sidebar close button click
         closeBtn.addEventListener('click', function () {
             sidebar.classList.remove('open');
             overlay.classList.remove('show');
         });
 
+        // Event listener for overlay click (to close sidebar)
         overlay.addEventListener('click', function () {
             sidebar.classList.remove('open');
             overlay.classList.remove('show');

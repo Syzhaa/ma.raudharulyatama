@@ -3,16 +3,15 @@
 ])
 @section('content')
 <!-- ##### Blog Area Start ##### -->
-<section class="blog-area section-padding-100-0 mb-50">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-heading">
-                    <h3>List Artikel</h3>
-                </div>
-            </div>
-        </div>
 
+
+<div style="margin-top: 30px; width: 100%;">
+    <x-heroconten>List Artikel <br> MA Raudhatul Yatama</x-heroconten>
+</div>
+
+<section class="blog-area section-padding-30-0 mb-50">
+        
+    <div class="container">
         <div class="row">
             
             @foreach($artikel as $art)
