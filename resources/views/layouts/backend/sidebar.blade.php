@@ -80,6 +80,15 @@
                         </p>
                     </a>
                 </li>
+                 <li class="nav-item">
+                    <a href="{{ route('admin.tentang.index') }}"
+                        class="nav-link {{ Request::segment(2) == 'tentang' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-school"></i>
+                        <p>
+                            Tentang
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-header">PENGATURAN</li>
                 <li class="nav-item">

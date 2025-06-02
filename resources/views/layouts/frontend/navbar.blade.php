@@ -21,7 +21,7 @@
             <div class="desktop-menu d-none d-md-flex align-items-center">
                 <ul class="d-flex list-unstyled mb-0">
                     <li class="px-3"><a href="/" class="{{ Request::is('/') ? 'text-primary' : '' }}">Beranda</a></li>
-                    <li class="px-3"><a href="{{ route('about') }}" class="{{ Request::is('about') ? 'text-primary' : '' }}">Tentang</a></li>
+                    <li class="px-3"><a href="{{ route('tentang') }}" class="{{ Request::is('tentang') ? 'text-primary' : '' }}">Tentang</a></li>
                     <li class="px-3"><a href="{{ route('jadwal') }}" class="{{ Request::is('jadwal') ? 'text-primary' : '' }}">Jadwal</a></li>
                     <li class="px-3"><a href="{{ route('pengumuman') }}" class="{{ Request::segment(1) == 'pengumuman' ? 'text-primary' : '' }}">Pengumuman</a></li>
                     <li class="px-3"><a href="{{ route('artikel') }}" class="{{ Request::segment(1) == 'artikel' ? 'text-primary' : '' }}">Artikel</a></li>
@@ -57,7 +57,7 @@
         </div>
         <ul class="list-unstyled px-3 pt-2">
             <li><a href="/" class="d-block py-2 {{ Request::is('/') ? 'text-primary' : '' }}">Home</a></li>
-            <li><a href="{{ route('about') }}" class="d-block py-2 {{ Request::is('about') ? 'text-primary' : '' }}">Tentang</a></li>
+            <li><a href="{{ route('tentang') }}" class="d-block py-2 {{ Request::is('tentang') ? 'text-primary' : '' }}">Tentang</a></li>
             <li><a href="{{ route('jadwal') }}" class="d-block py-2 {{ Request::is('jadwal') ? 'text-primary' : '' }}">Jadwal</a></li>
             <li><a href="{{ route('pengumuman') }}" class="d-block py-2 {{ Request::segment(1) == 'pengumuman' ? 'text-primary' : '' }}">Pengumuman</a></li>
             <li><a href="{{ route('artikel') }}" class="d-block py-2 {{ Request::segment(1) == 'artikel' ? 'text-primary' : '' }}">Artikel</a></li>

@@ -240,7 +240,7 @@
             <div class="footer-nav-column">
                 <h4 class="footer-nav-title">Navigasi</h4>
                 <ul style="display: flex; flex-direction: column; gap: 8px; list-style:none; padding:0; margin:0;"> <li><a href="{{ route('home') }}" class="footer-nav-link">Beranda</a></li>
-                    <li><a href="{{ route('about') }}" class="footer-nav-link">Profil</a></li>
+                    <li><a href="{{ route('tentang') }}" class="footer-nav-link">tentang</a></li>
                     <li><a href="{{ route('jadwal') }}" class="footer-nav-link">Jadwal</a></li>
                     <li><a href="{{ route('pengumuman') }}" class="footer-nav-link">Pengumuman</a></li>
                     <li><a href="{{ route('artikel') }}" class="footer-nav-link">Artikel</a></li>

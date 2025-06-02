@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\KategoriArtikelController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\JadwalController as JadwalControllerAdmin;
+use App\Http\Controllers\Admin\TentangController as AdminTentangController;
 
 
 //Controllers Namespace
@@ -18,6 +19,7 @@ use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\TentangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,17 +35,13 @@ use App\Http\Controllers\GaleriController;
 //Home
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-
-
-
 Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel');
 Route::get('/artikel/{artikel:slug}', [ArtikelController::class, 'show'])->name('artikel.show');
 Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman');
 Route::get('/pengumuman/{pengumuman:slug}', [PengumumanController::class, 'show'])->name('pengumuman.show');
 Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
 Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri');
+Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
 
 //Admin
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth']], function () {
@@ -60,6 +58,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
 		Route::get('/jadwal', [JadwalControllerAdmin::class, 'index'])->name('jadwal.index');
 		Route::get('/jadwal/{id}/edit', [JadwalControllerAdmin::class, 'edit'])->name('jadwal.edit');
 		Route::put('/jadwal/{id}', [JadwalControllerAdmin::class, 'update'])->name('jadwal.update');
+		Route::get('/tentang', [AdminTentangController::class, 'index'])->name('tentang.index');
+		Route::get('/tentang/edit/{id}', [AdminTentangController::class, 'edit'])->name('tentang.edit');
+		Route::put('/tentang/update/{id}', [AdminTentangController::class, 'update'])->name('tentang.update');
+		Route::put('/tentang/{id}/toggle', [AdminTentangController::class, 'toggle'])->name('tentang.toggle');
+		Route::patch('tentang/update/{id}/{field}', [AdminTentangController::class, 'updateField'])->name('tentang.updateField');
+
+
 		//Resource Controller
 		Route::resource('users', 'UsersController');
 		Route::resource('pengumuman', 'PengumumanController');
