@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\KategoriArtikelController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\JadwalController as JadwalControllerAdmin;
 
 
 //Controllers Namespace
@@ -54,11 +55,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
 		Route::put('/profile/logo', [ProfileController::class, 'updateLogo'])->name('profile.logo.update');
 		Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('change-password.index');
 		Route::get('/kategori-artikel', [KategoriArtikelController::class, 'index'])->name('kategori-artikel.index');
-
+		Route::get('/jadwal/create', [JadwalControllerAdmin::class, 'create'])->name('jadwal.create');
+		Route::post('/jadwal/store', [JadwalControllerAdmin::class, 'store'])->name('jadwal.store');
+		Route::get('/jadwal', [JadwalControllerAdmin::class, 'index'])->name('jadwal.index');
+		Route::get('/jadwal/{id}/edit', [JadwalControllerAdmin::class, 'edit'])->name('jadwal.edit');
+		Route::put('/jadwal/{id}', [JadwalControllerAdmin::class, 'update'])->name('jadwal.update');
 		//Resource Controller
 		Route::resource('users', 'UsersController');
 		Route::resource('pengumuman', 'PengumumanController');
-		Route::resource('agenda', 'AgendaController');
 		Route::resource('artikel', 'ArtikelController');
 		Route::resource('kategori-artikel', 'KategoriArtikelController');
 	});

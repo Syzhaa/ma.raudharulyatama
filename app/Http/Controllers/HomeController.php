@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Agenda;
 use App\Models\Artikel;
 use App\Models\Pengumuman;
+use App\Models\Jadwal;
 
 class HomeController extends Controller
 {
@@ -14,8 +15,9 @@ class HomeController extends Controller
     {
     	return view('home.index',[
             'agenda' => Agenda::latest()->take(2)->get(),
-            'artikel' => Artikel::with(['user','kategoriArtikel'])->latest()->take(2)->get(),
-            'pengumuman' => Pengumuman::with(['user'])->latest()->take(2)->get(),
+            'artikel' => Artikel::with(['user', 'kategoriArtikel'])->latest()->take(3)->get(),
+            'pengumuman' => Pengumuman::with(['user'])->latest()->take(3)->get(),
+            'jadwal' => Jadwal::latest()->take(3)->get(),
         ]);
     }
 

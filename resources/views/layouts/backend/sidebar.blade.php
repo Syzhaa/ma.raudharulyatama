@@ -72,11 +72,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.agenda.index') }}"
-                        class="nav-link {{ Request::segment(2) == 'agenda' ? 'active' : '' }}">
+                    <a href="{{ route('admin.jadwal.index') }}"
+                        class="nav-link {{ Request::segment(2) == 'jadwal' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-list"></i>
                         <p>
-                            Agenda
+                            Jadwal
                         </p>
                     </a>
                 </li>
